@@ -1661,10 +1661,10 @@ spec:
           resources:
             limits:
               cpu: 2500m
-              memory: 10Gi
+              memory: 2Gi
             requests:
               cpu: 2000m
-              memory: 5Gi
+              memory: 2Gi
           livenessProbe:
             failureThreshold: 3
             tcpSocket:
