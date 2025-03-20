@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/whitelist-x-forwarded-for: 'true'
+  labels:
+    app.kubernetes.io/name: din-eliza-app
+  name: din-eliza-app
+  namespace: din-eliza
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: din-elia-eu-dev.sandbox.web3factory.consensys.net
+      http:
+        paths:
+          - backend:
+              service:
+                name: din-eliza-app
+                port:
+                  number: 3000
+            path: /
+            pathType: Prefix
+          - backend:
+              service:
+                name: doesnotexist
+                port:
+                  number: 3000
+            path: /health
+            pathType: Prefix
+          - backend:
+              service:
+                name: doesnotexist
+                port:
+                  number: 3000
+            path: /metrics
+            pathType: Prefix
+  tls:
+    - hosts:
+        - din-elia-eu-dev.sandbox.web3factory.consensys.net

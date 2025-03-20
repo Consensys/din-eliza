@@ -1,0 +1,12 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: din-eliza-app
+  namespace: din-eliza
+  labels:
+    app.kubernetes.io/name: din-eliza-app
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: din-eliza-app
