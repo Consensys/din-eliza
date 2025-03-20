@@ -19,10 +19,8 @@ spec:
       containers:
         - name: din-elia
           image: 992382680272.dkr.ecr.eu-west-3.amazonaws.com/sandbox-dev-din-eliza:main-5745199
-          command:
-            - node
-          args:
-            - dist/server.js
+          command: ["sh", "-c"]
+          args: ["pnpm start --characters='characters/rag-eliza.json'"]
           ports:
             - containerPort: 3000
               protocol: TCP
