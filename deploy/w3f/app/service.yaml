@@ -11,5 +11,9 @@ spec:
       port: 3000
       protocol: TCP
       targetPort: 3000
+    - name: slack
+      port: 3069
+      protocol: TCP
+      targetPort: 3069
   selector:
     app.kubernetes.io/name: din-eliza-app

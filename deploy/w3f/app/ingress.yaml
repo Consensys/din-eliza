@@ -22,17 +22,10 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: doesnotexist
+                name: din-eliza-app
                 port:
-                  number: 3000
-            path: /health
-            pathType: Prefix
-          - backend:
-              service:
-                name: doesnotexist
-                port:
-                  number: 3000
-            path: /metrics
+                  number: 3069
+            path: /slack
             pathType: Prefix
   tls:
     - hosts:
