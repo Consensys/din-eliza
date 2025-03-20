@@ -80,6 +80,7 @@
     "@coinbase/coinbase-sdk": "0.10.0",
     "@deepgram/sdk": "^3.11.1",
     "@elizaos-plugins/adapter-sqlite": "workspace:*",
+    "@elizaos-plugins/client-slack": "github:elizaos-plugins/client-slack",
     "@injectivelabs/sdk-ts": "^1.14.33",
     "@vitest/eslint-plugin": "1.0.1",
     "amqplib": "0.10.5",
