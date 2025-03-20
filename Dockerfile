@@ -41,7 +41,7 @@ COPY . .
 RUN pnpm install
 
 # Build the project
-RUN pnpm run build && pnpm prune --prod
+RUN pnpm run build
 
 # Final runtime image
 FROM node:23.3.0-slim
@@ -65,6 +65,7 @@ COPY --from=builder /app/pnpm-workspace.yaml ./
 COPY --from=builder /app/.npmrc ./
 COPY --from=builder /app/turbo.json ./
 COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/agent ./agent
 COPY --from=builder /app/client ./client
 COPY --from=builder /app/lerna.json ./
@@ -76,4 +77,4 @@ COPY --from=builder /app/characters ./characters
 EXPOSE 3000 5173
 
 # Command to start the application
-CMD ["sh", "-c", "pnpm start & pnpm start:client"]
+CMD ["sh", "-c", "pnpm start --characters='characters/rag-eliza.json'"]
