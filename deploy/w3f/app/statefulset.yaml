@@ -7,20 +7,20 @@ metadata:
   namespace: din-eliza
 spec:
   replicas: 1
-#   revisionHistoryLimit: 3
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app.kubernetes.io/name: din-eliza-app
+  serviceName: din-eliza-app
   template:
     metadata:
       labels:
         app.kubernetes.io/name: din-eliza-app
-    serviceName: din-eliza-app
     spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: din-elia
-          image: 992382680272.dkr.ecr.eu-west-3.amazonaws.com/sandbox-dev-din-eliza:main-5745199
+          image: 992382680272.dkr.ecr.eu-west-3.amazonaws.com/sandbox-dev-din-eliza:main-ad7c56c
           command: ["sh", "-c"]
           args: ["pnpm start --characters='characters/rag-eliza.json'"]
           envSecrets:
@@ -1651,8 +1651,6 @@ spec:
               value: "3069"  # Must match the port you used with ngrok
             - name: DEBUG
               value: "eliza:*"
-
-
           ports:
             - containerPort: 3000
               protocol: TCP
@@ -1662,11 +1660,11 @@ spec:
           imagePullPolicy: Always
           resources:
             limits:
-              cpu: 2Gi
-              memory: 2Gi
-            requests:
-              cpu: 10Gi
+              cpu: 2500m
               memory: 10Gi
+            requests:
+              cpu: 2000m
+              memory: 5Gi
           livenessProbe:
             failureThreshold: 3
             tcpSocket:
@@ -1685,7 +1683,7 @@ spec:
             timeoutSeconds: 5
   volumeClaimTemplates:
   - metadata:
-      name: sqlite
+      name: data
     spec:
       accessModes: [ "ReadWriteOnce" ]
     #   storageClassName: "my-storage-class"
