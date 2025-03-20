@@ -32,6 +32,9 @@ spec:
             requests:
               cpu: 300m
               memory: 1Gi
+          envFrom:
+            - secretRef:
+                name: din-eliza-app
           livenessProbe:
             failureThreshold: 3
             tcpSocket:
