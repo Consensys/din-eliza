@@ -36,7 +36,8 @@
         { "directory": "github-issues", "shared": false },
         { "directory": "bnb-blog", "shared": false },
         { "directory": "bnb-tweets", "shared": false },
-        { "path": "bsc-bnb-terminology.md" }
+        { "path": "bsc-bnb-terminology.md" },
+        { "path": "DIN_LIVE_NETWORKS_PROVIDERS.md" }
     ],
     "topics": [
         "Blockchain technology",
