@@ -23,25 +23,9 @@ spec:
           image: 992382680272.dkr.ecr.eu-west-3.amazonaws.com/sandbox-dev-din-eliza:main-ad7c56c
           command: ["sh", "-c"]
           args: ["pnpm start --characters='characters/rag-eliza.json'"]
-          envSecrets:
-          - secretName: din-eliza-app-secrets
-            secretKey: SLACK_CLIENT_SECRET
-            envName: SLACK_CLIENT_SECRET
-          - secretName: din-eliza-app-secrets
-            secretKey: SLACK_SIGNING_SECRET
-            envName: SLACK_SIGNING_SECRET
-          - secretName: din-eliza-app-secrets
-            secretKey: SLACK_BOT_TOKEN
-            envName: SLACK_BOT_TOKEN
-          - secretName: din-eliza-app-secrets
-            secretKey: SLACK_VERIFICATION_TOKEN
-            envName: SLACK_VERIFICATION_TOKEN
-          - secretName: din-eliza-app-secrets
-            secretKey: OPENAI_API_KEY
-            envName: OPENAI_API_KEY
-          - secretName: din-eliza-app-secrets
-            secretKey: TAVILY_API_KEY
-            envName: TAVILY_API_KEY
+          envFrom:
+            - secretRef:
+                name: din-eliza-app
           env:
             ####################################
             #### Server & DB Configurations ####
@@ -1661,10 +1645,10 @@ spec:
           resources:
             limits:
               cpu: 6000m
-              memory: 40Gi
+              memory: 30Gi
             requests:
               cpu: 5000m
-              memory: 40Gi
+              memory: 30Gi
           livenessProbe:
             failureThreshold: 3
             tcpSocket:
