@@ -19,7 +19,7 @@ spec:
     spec:
       terminationGracePeriodSeconds: 10
       containers:
-        - name: din-elia
+        - name: din-eliza
           image: 992382680272.dkr.ecr.eu-west-3.amazonaws.com/sandbox-dev-din-eliza:main-ad7c56c
           command: ["sh", "-c"]
           args: ["pnpm start --characters='characters/rag-eliza.json'"]
@@ -1661,10 +1661,10 @@ spec:
           resources:
             limits:
               cpu: 2500m
-              memory: 15Gi
+              memory: 20Gi
             requests:
               cpu: 2500m
-              memory: 15Gi
+              memory: 20Gi
           livenessProbe:
             failureThreshold: 3
             tcpSocket:
