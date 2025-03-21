@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: din-eliza-app
 spec:
-  minAvailable: 1
+  minAvailable: 0
   selector:
     matchLabels:
       app.kubernetes.io/name: din-eliza-app
