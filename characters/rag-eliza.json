@@ -2,7 +2,8 @@
     "name": "RAG Eliza",
     "username": "rag-eliza",
     "plugins": [
-        "@elizaos-plugins/client-slack"
+        "@elizaos-plugins/client-slack",
+        "@elizaos/plugin-web-search"
     ],
     "modelProvider": "openai",
     "settings": {
